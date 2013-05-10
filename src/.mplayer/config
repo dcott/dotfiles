@@ -1,0 +1,8 @@
+# Write your default config options here!
+
+
+#geometry=50%:50%
+#geometry=100%:0%
+#ao=esd
+vo=gl
+#monitoraspect=2560/1600

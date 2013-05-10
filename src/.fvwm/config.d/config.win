@@ -1,0 +1,612 @@
+#ModulePath /usr/local/libexec/fvwm/2.5.24/
+ImagePath $[HOME]/.fvwm/decors/black:$[HOME]/.fvwm/icons:$[HOME]/.fvwm/pixmaps
+DeskTopSize 4x1
+EdgeThickness 1
+EdgeResistance 333
+EdgeScroll 100 100
+OpaqueMoveSize -1
+ClickTime 150
+IgnoreModifiers L25
+CursorStyle ROOT    left_ptr black white
+CursorStyle DEFAULT left_ptr black white
+DefaultFont fixed
+ColormapFocus FollowsFocus
+Emulate Fvwm
+EwmhBaseStruts 0 0 24 0
+
+################################################################################
+# STYLE
+
+AddToDecor black
++ ButtonStyle 1 ActiveUp (Pixmap menu.xpm -- flat)
++ ButtonStyle 1 ActiveDown (Pixmap menuDown.xpm -- flat)
++ ButtonStyle 1 Inactive (Pixmap menu.xpm -- flat)
+#
++ ButtonStyle 2 - !MwmDecorMax
++ ButtonStyle 2 ActiveUp (Pixmap close.xpm -- flat)
++ ButtonStyle 2 ActiveDown (Pixmap closeDown.xpm -- flat)
++ ButtonStyle 2 Inactive (Pixmap close.xpm -- flat)
+#
++ ButtonStyle 4 - MwmDecorMax
++ ButtonStyle 4 ActiveUp (Pixmap max.xpm -- flat)
++ ButtonStyle 4 ToggledActiveUp (Pixmap maxDown.xpm -- flat)
++ ButtonStyle 4 ToggledActiveDown (Pixmap maxDown.xpm -- flat)
++ ButtonStyle 4 ToggledInActiveUp (Pixmap maxDown.xpm -- flat)
++ ButtonStyle 4 ToggledInActiveDown (Pixmap maxDown.xpm -- flat)
++ ButtonStyle 4 ActiveDown (Pixmap maxDown.xpm -- flat)
++ ButtonStyle 4 Inactive (Pixmap max.xpm -- flat)
+#
++ ButtonStyle 6 ActiveUp (Pixmap min.xpm -- flat)
++ ButtonStyle 6 ActiveDown (Pixmap minDown.xpm -- flat)
++ ButtonStyle 6 Inactive (Pixmap min.xpm -- flat)
+#
++ TitleStyle Height 20 -- flat
++ BorderStyle -- HiddenHandles NoInset
+
+
+#Style "*"                SloppyFocus
+Style "*"                ClickToFocus
+Style "*"                ClickToFocusRaisesOff
+Style "*"                NoIcon
+Style "*"                BorderWidth 4, HandleWidth 4
+Style "*"                ForeColor Black, BackColor Gray40
+Style "*"                HilightFore White, HilightBack Gray40
+#Style "*"                SmartPlacement
+#Style "*"                RandomPlacement
+Style "*"                PositionPlacement
+Style "*"                UseDecor black
+Style "*"                RaiseTransient
+Style "*"                LowerTransient
+Style "*"                DecorateTransient
+Style "*"                StackTransientParent
+#Style "*"                IgnoreRestack
+Style "*"                EdgeMoveDelay 333
+Style "*"                EdgeMoveResistance 20
+Style "*"                SnapAttraction 10
+Style "*"                MwmDecor
+Style "*"                MwmFunctions
+Style "*"                MwmButtons
+# messes up xmms
+#Style "*"                FixedPPosition
+
+Style "xterm"            ClickToFocusRaises
+
+Style "Fvwm*"            NoTitle
+Style "Fvwm*"            WindowListSkip
+Style "Fvwm*"            NoHandles
+Style "Fvwm*"            CirculateSkipIcon
+
+Style "FvwmWindowList"   BorderWidth 0
+
+Style "FvwmTaskBar"      Sticky
+Style "FvwmTaskBar"      NoTitle
+Style "FvwmTaskBar"      NeverFocus  
+Style "FvwmTaskBar"      Handles
+Style "FvwmTaskBar"      BorderWidth 0, HandleWidth 0
+Style "FvwmTaskBar"      ForeColor Black
+Style "FvwmTaskBar"      BackColor grey40
+Style "FvwmTaskBar"      Pad 0
+
+Style "FvwmPager"        Sticky
+Style "FvwmPager"        NoTitle
+Style "FvwmPager"        NeverFocus
+
+#Style "MPlayer"          PositionPlacement -0 +0
+Style "MPlayer"          PositionPlacement Center
+Style "MPlayer"          FixedPPosition
+
+################################################################################
+# Application Icons
+
+#Style *               Icon unknown.xpm
+Style *               MiniIcon unknown-mini.xpm
+#Style xterm           Icon xterm.xpm
+Style xterm           MiniIcon xterm-mini.xpm
+#Style xmms            Icon xmms.xpm
+Style xmms            MiniIcon xmms-mini.xpm
+#Style xcalc           Icon xcalc.xpm
+Style xcalc           MiniIcon xcalc-mini.xpm
+#Style Maya            Icon maya.xpm
+Style Maya            MiniIcon maya-mini.xpm
+#Style Gaim            Icon gaim.xpm
+Style Gaim            MiniIcon gaim-mini.xpm
+#Style Nautilus        Icon nautilus.xpm
+Style Nautilus        MiniIcon nautilus-mini.xpm
+#Style Firefox-bin     Icon firefox.xpm
+Style Firefox-bin     MiniIcon firefox-mini.xpm
+#Style Thunderbird-bin Icon thunderbird.xpm
+Style Thunderbird-bin MiniIcon thunderbird-mini.xpm
+#Style xosvlocal       Icon xosview.xpm
+Style xosvlocal       MiniIcon xosview-mini.xpm
+#Style xosview         Icon xosview.xpm
+Style xosview         MiniIcon xosview-mini.xpm
+#Style rushtop         Icon rush_top.xpm
+Style rushtop         MiniIcon rush_top-mini.xpm
+#Style irush           Icon irush.xpm
+Style irush           MiniIcon irush-mini.xpm
+
+
+################################################################################
+# KEY BINDINGS
+
+# Note: Mod4 is bound to the Super_L key, which is the Apple command key
+#       So most key bindings are Apple + key. On pc's that's the windows key.
+Key Return A 4  Exec exec xterm
+
+Key Tab    A M  WindowList ( CurrentGlobalPage ) Root c c CurrentDesk CurrentAtEnd
+Key n      A 4  Next [$[w.class]] Focus
+Key n      A 4S Prev [$[w.class]] Focus
+Key Tab    A 4  Next [!$[w.class]] Focus
+Key Tab    A 4S Prev [!$[w.class]] Focus
+#Key n     A 4 Next [XTerm] Focus
+#Key p     A 4 Prev [*] Focus
+
+Key r      A 4  Raise
+Key m      A 4  Raise-and-Maximize-Vert
+Key m      A 4S Raise-and-Maximize
+Key s      A 4  Raise-and-WindowShade
+
+# volume control
+#Key F13 A N Exec exec aumix -v -1
+#Key F14 A N Exec exec aumix -v +1
+
+# Move the active window to the center of the screen
+Key c      A 4  Move -0 0
+
+# Move around virtual desktops
+# Left
+Key y      A 4  Scroll -100 0
+# Down
+Key u      A 4  Scroll +0   +100
+# Up
+Key i      A 4  Scroll +0   -100
+# Right
+Key o      A 4  Scroll +100 +0
+
+Key KP_End       A 4M GotoPage 0 0
+Key KP_Down      A 4M GotoPage 1 0
+Key KP_Page_Down A 4M GotoPage 2 0
+Key KP_Left      A 4M GotoPage 3 0
+
+# Focus the next window in the general direction
+# Left
+Key h      A 4  Direction West [CurrentPage] Focus
+# Down
+Key j      A 4  Direction South [CurrentPage] Focus
+# Up
+Key k      A 4  Direction North [CurrentPage] Focus
+# Right
+Key l      A 4  Direction East [CurrentPage] Focus
+
+# press shift arrow + control anywhere, and move the pointer by 1% of a page 
+Key Left   A S4 CursorMove -1p 0p
+Key Right  A S4 CursorMove +1p +0p
+Key Up     A S4 CursorMove +0p -1p
+Key Down   A S4 CursorMove +0p +1p
+
+# press shift arrow + meta key, and move the pointer by 1/10 of a page 
+Key Left   A 4  CursorMove -10 +0
+Key Right  A 4  CursorMove +10 +0
+Key Up     A 4  CursorMove +0  -10
+Key Down   A 4  CursorMove +0  +10
+
+# Keyboard accelerators 
+Key F1      A   4   Menu RootMenu
+Key F2      A   4   Menu Window-Ops
+Key F3      A   4   Lower
+Key F4      A   4   Close
+Key F5      A   4   Iconify
+Key F7      A   4   Move
+Key F8      A   4   Resize
+Key F9      A   4   Iconify
+Key F10     A   4   Maximize
+Key F11     A   4   Restart
+Key F11     A   4S  Quit
+Key F12     A   4   Exec exec xscreensaver-command -lock
+
+
+Key i       A   4   Iconify
+
+# Application launchers
+Key KP_End       A   4   Exec xterm -geometry +0-0
+Key KP_Down      A   4   Exec xterm -geometry +511-0
+Key KP_Page_Down A   4   Exec xterm -geometry +1022-0
+Key KP_Left      A   4   Exec xterm -geometry +0-348
+Key KP_Begin     A   4   Exec xterm -geometry +511-348
+Key KP_Right     A   4   Exec xterm -geometry +1022-348
+Key KP_Home      A   4   Exec xterm -geometry +0-696
+Key KP_Up        A   4   Exec xterm -geometry +511-696
+Key KP_Page_Up   A   4   Exec xterm -geometry +1022-696
+
+################################################################################
+# MOUSE BINDINGS
+#
+# Mouse Button Context Modifiers Function
+#
+# Button: 0-5
+#   The button number ranges 0-5. 0 means any button.
+# Context: RWTSFI0-9
+#   R root window (the background)
+#   W an application window
+#   T the title bar
+#   S the side top or bottom bars
+#   F the window corners
+#   I the icon window
+#   0-9 the title bar buttons 13579 08642
+#     by default ther are only 3 buttons 1, 2 and 4.
+# Modifiers: NCSMLA1-5
+#   N no modifiers  
+#   C control   
+#   S shift 
+#   M meta (alt)
+#   L caps-lock (ignored by default)
+#   A any modfier
+#   1-5 X11 modifiers mod1 through mod5 (4 is usually the windows key)
+# Function: one of fvwm's built-in functions
+#   if function is - it removes a previously defined or default binding
+################################################################################
+
+#   for the root window
+Mouse   1   R   A   Nop
+Mouse   2   R   A   WindowList
+Mouse   3   R   A   Menu RootMenu Nop
+Mouse   4   R   A   Scroll -100 0
+Mouse   5   R   A   Scroll  100 0
+Mouse   4   A   CM  Scroll -100 0
+Mouse   5   A   CM  Scroll  100 0
+
+Mouse   0   1   A   Menu Window-Ops2 Close
+Mouse   0   6   A   WindowActionIconify
+Mouse   1   4   A   Maximize-Func
+Mouse   2   4   A   WindowActionFillVert
+Mouse   3   4   A   WindowActionFill
+Mouse   0   2   A   WindowActionClose
+
+#   for other parts of the window/borders/icons:
+Mouse   1   FS  A   Resize-or-Raise
+Mouse   1   T   A   Raise-or-WindowShade
+Mouse   1   I   A   Move-or-Iconify
+Mouse   2   I   A   Iconify
+Mouse   2   T   A   WindowShade
+Mouse   3   FST A   Lower-or-Move
+Mouse   1   W   4   Raise-or-Move
+
+
+################################################################################
+# FUNCTIONS
+
+# Initialization Functions
+AddToFunc InitFunction
+#+ I Module FvwmAnimate
++ I Module FvwmTaskBar
+
+AddToFunc RestartFunction
+#+ I Module FvwmAnimate
++ I Module FvwmTaskBar
+
+AddToFunc MailFunction
++ I Next [$0] Iconify -1
++ I Next [$0] Focus
++ I None [$0] Exec $0 $1
+
+AddToFunc Raise-or-WindowShade
++ I Raise
++ M Move
++ D WindowShade
+
+AddToFunc Move-or-Raise
++ M Raise
++ M Move
++ D Lower
+
+AddToFunc Raise-and-Maximize
++ I Raise
++ I Maximize
+
+AddToFunc Raise-and-Maximize-Vert
++ I Raise
++ I Maximize 0 100
+
+AddToFunc Raise-and-WindowShade
++ I Raise
++ I WindowShade
+
+AddToFunc Maximize-Func
++ C Raise
++ C Maximize 100 100
+
+AddToFunc Move-or-Iconify
++ I Raise
++ M Move
++ D Iconify
+
+AddToFunc Resize-or-Raise
++ C Raise
++ M Resize
+
+AddToFunc Resize-or-Raise2
++ M Raise
++ M Resize
++ D Lower
+
+AddToFunc Lower-or-Move
++ I Lower
++ M Move
+
+AddToFunc Raise-or-Move
++ I Raise
++ M Move
+
+AddToFunc Iconify-and-Raise
++ I Iconify
++ I Raise
+
+AddToFunc WindowActionIconify
++ C Iconify
+
+AddToFunc WindowActionClose
++ C Close
+
+AddToFunc WindowActionFill
++ C Maximize grow grow
+
+AddToFunc WindowActionFillVert
++ C Maximize 0 grow
+
+DestroyFunc IconifyOrFocusAndRaise
+AddToFunc   IconifyOrFocusAndRaise
++ I ThisWindow (Iconic) Iconify off
++ I TestRc (NoMatch) ThisWindow (Focused) Iconify on
++ I ThisWindow (!Iconic) Focus
++ I ThisWindow (!Iconic) Raise
+
+DestroyFunc ToggleFvwmPager
+AddToFunc ToggleFvwmPager
++ I All (FvwmPager,Raised) KillModule FvwmPager
++ I All (FvwmPager) Raise
++ I TestRc (NoMatch) Module FvwmPager
+
+
+################################################################################
+# MENUS
+
+MenuStyle * mwm
+MenuStyle * PopupImmediately
+MenuStyle * PopdownImmediately
+MenuStyle * Foreground Black
+MenuStyle * Background Grey75
+MenuStyle * SeparatorsLong
+MenuStyle * Hilight3DOff
+MenuStyle * HilightBack Grey40
+MenuStyle * Animation
+MenuStyle * TrianglesSolid
+MenuStyle * SideColor White
+MenuStyle * TrianglesUseFore
+
+AddToMenu RootMenu  "Root Menu" Title
++ "xterm"             Exec exec xterm
+#+ ""                  Nop
++ "Net"               Popup Net
++ "Graphics"          Popup Graphics
++ "Audio"             Popup Audio
++ "Production Tools"  Popup ProductionTools
++ "Utils"             Popup Utils
++ "Office"            Popup Office
++ "Games"             Popup Games
+#+ ""                  Nop
++ "System"            Popup System
+#+ "Fvwm Window Ops" Popup Window-Ops
+#+ ""                  Nop
++ "Lock Screen"       Exec exec xscreensaver-command -lock
++ "Restart FVWM"      Restart
++ "Quit FVWM"         Module FvwmForm QuitVerify
+
+AddToMenu Net "Net" Title
++ "firefox"          Exec exec firefox
++ "thunderbird"      Exec exec thunderbird
++ "gaim"             Exec exec gaim
++ "vncviewer"        Exec exec vncviewer
+#+ ""                 Nop
++ "cisco vpn start"  Exec exec xterm -T vpnclient -n vpnclient -e vpnclient connect Turner-US-ATL user $USER
++ "cisco vpn stop"   Exec exec vpnclient disconnect
+
+AddToMenu Graphics "Graphics" Title
++ "boujou2"          Exec exec boujou2
++ "boujou4"          Exec exec boujou4
++ "fcheck"           Exec exec fcheck
++ "gimp"             Exec exec gimp
++ "gqview"           Exec exec gqview
++ "maya7"            Exec exec xterm -T 'Maya7 Launcher' -n 'Maya85 Launcher' -e maya7
++ "maya85"           Exec exec xterm -T 'Maya85 Launcher' -n 'Maya85 Launcher' -e maya85
++ "maya85u"          Exec exec xterm -T 'Maya85 Unlimited Launcher' -n 'Maya85 Unlimited Launcher' -e maya85u
++ "maya2008"          Exec exec xterm -T 'Maya2008 Complete Launcher' -n 'Maya2008 Complete Launcher' -e maya2008
++ "maya2008u"          Exec exec xterm -T 'Maya2008 Unlimited Launcher' -n 'Maya2008 Unlimited Launcher' -e maya2008u
++ "monet"            Exec exec monet
++ "shake"            Exec exec xterm -T 'Shake Launcher' -n 'Shake Launcher' -e shake
++ "toxik"            Exec exec xterm -T 'Toxik Launcher' -n 'Toxik Launcher' -e toxik
+
+AddToMenu Audio "Audio" Title
++ "audacity"         Exec exec audacity
++ "ardour"           Exec exec ardour
++ "xmms"             Exec exec xmms
+
+AddToMenu ProductionTools "Production Tools" Title
++ "irush"                Exec exec irush
++ "rushtop"              Exec exec rushtop
++ "onrush"               Exec exec onrush
+#+ ""                     Nop
++ "rush-maya701"         Exec exec //tsefx/sys/bin/rush-maya701.pl
++ "rush-maya85"          Exec exec //tsefx/sys/bin/rush-maya85.pl
++ "rush-maya-tile"       Exec exec //tsefx/sys/bin/rush-maya-tile.pl
++ "rush-shake"           Exec exec //tsefx/sys/bin/rush-shake.pl
++ "rush-shake_quicktime" Exec exec //tsefx/sys/bin/rush-shake_quicktime.pl
++ "rush-xsi"             Exec exec //tsefx/sys/bin/rush-xsi.pl
++ "rush-afterfx"         Exec exec //tsefx/sys/bin/rush-afterfx.pl
+
+AddToMenu Utils "Utils" Title
++ "gnomecalc"        Exec exec gnome-calculator
++ ""                 Nop
++ "xmag"             Exec exec xmag
++ "xfontsel"         Exec exec xfontsel
++ ""                 Nop
++ "xeyes"            Exec exec xeyes
++ "xsnow"            Exec exec xsnow -nosanta -notrees
++ ""                 Nop
++ "top"              Exec exec xterm -T Top -n Top -e top
++ "gkrellm2"         Exec exec gkrellm
++ "xosview"          Exec exec xosview
++ ""                 Nop
++ "screenshot fullscreen" Exec exec snaproot.sh
++ "screenshot select win" Exec exec snapwin.sh
+#+ ""                 Nop
+#+ "FvwmConsole"      Module FvwmConsole -terminal xterm
+#+ "FvwmDebug"        Module FvwmDebug /home/dcott/.fvwm/debug
+
+AddToMenu Office "Office" Title
++ "ooffice"          Exec exec ooffice
++ "evince"           Exec exec evince
++ "nedit"            Exec exec nedit
+
+AddToMenu Games "Games" Title
++ "quake3"           Exec exec quake3
++ "xboard"           Exec exec xboard
+
+AddToMenu System "System" Title
++ "Reset Root Cursor"   Exec exec xsetroot -cursor_name left_ptr
++ "Nvidia Settings"     Exec exec nvidia-settings
++ "Sound"               Popup Sound
++ "Xscreensaver"        Popup Xscreensaver
++ "Wallpaper"           Popup Wallpaper
+
+AddToMenu Sound "Sound" Title
++ "gnome volume"        Exec exec gnome-volume-control
++ "alsamixer"           Exec exec xterm -e alsamixer
++ "amixer 70"           Exec exec amixer set Master 70%; amixer set PCM 70%
++ "amixer 00"           Exec exec amixer set Master 0%; amixer set PCM 0%
+
+AddToMenu Xscreensaver "Xscreensaver" Title
++ "on"       Exec exec xscreensaver
++ "off"      Exec exec xscreensaver-command -exit
++ "prefs"    Exec exec xscreensaver-command -prefs
++ "activate" Exec exec xscreensaver-command -activate
++ "lock"     Exec exec xscreensaver-command -lock
+
+AddToMenu Wallpaper "Wallpaper" Title
++ "Black"    Exec exec xsetroot -solid black
++ "Grey 20"  Exec exec xsetroot -solid grey20
++ "White"    Exec exec xsetroot -solid white
++ "Browse"   Exec exec gqview
+
+AddToMenu Window-Ops "Window Ops" Title
++ "Move"           Move
++ "Resize"         Resize
++ "Raise"          Raise
++ "Lower"          Lower
++ "(De)Iconify"    Iconify
++ "(Un)Stick"      Stick
++ "(Un)Maximize"   Maximize
++ ""               Nop
++ "Delete"         Delete
++ "Close"          Close
++ "Destroy"        Destroy
++ ""               Nop
++ "Refresh Window" RefreshWindow
+
+AddToMenu Window-Ops2
++ "Send To"       PopUp send_to
++ "StaysOnBottom" Layer 0 2
++ "StaysPut"      Layer 0 4
++ "StaysOnTop"    Layer 0 6
++ "&Move" Move
++ "&Resize"       Resize
++ "R&aise"        Raise
++ "&Lower"        Lower
++ "(De)&Iconify"  Iconify
++ "(Un)&Stick"    Stick
++ "(Un)Ma&ximize" Maximize
++ ""              Nop
++ "&Delete"       Delete
++ "&Close"        Close
++ "Destroy"       Destroy
+
+AddToMenu send_to
++ "page 1" MoveToPage 0 0
++ "page 2" MoveToPage 1 0
++ "page 3" MoveToPage 2 0
++ "page 4" MoveToPage 3 0
+
+
+################################################################################
+# MODULES
+
+*FvwmWinListBack Gray60
+*FvwmWinListFore White
+*FvwmWinListFont -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+*FvwmWinListAction Click1 Iconfiy
+*FvwmWinListAction Click2 Module "FvwmIdent" FvwmIdent
+*FvwmWinListAction Click3 Iconify
+*FvwmWinListUseSkipList
+*FvwmWinListGeometry +0-1
+
+*FvwmTaskBar: Geometry +0+0
+*FvwmTaskBar: Fore Black
+*FvwmTaskBar: Back grey40
+*FvwmTaskBar: FocusFore Black
+*FvwmTaskBar: FocusBack grey40
+*FvwmTaskBar: IconFore Black
+*FvwmTaskBar: IconBack grey40
+#*FvwmTaskBar: AutoStick # oddly implemented
+*FvwmTaskBar: UseSkipList
+#*FvwmTaskBar: DeskOnly
+*FvwmTaskBar: PageOnly
+#*FvwmTaskBar: ShowTransients
+#*FvwmTaskBar: ButtonWidth 500
+*FvwmTaskBar: NoBrightFocus
+#*FvwmTaskBar: 3DFvwm
+*FvwmTaskBar: NoIconAction SendToModule FvwmAnimate animate
+*FvwmTaskBar: ClockFormat %a %b %d %I:%M:%S %p
+*FvwmTaskBar: UpdateInterval 1
+*FvwmTaskBar: IgnoreOldMail
+*FvwmTaskBar: StartName FVWM
+*FvwmTaskBar: StartMenu RootMenu
+*FvwmTaskBar: WindowButtonsLeftMargin 0
+*FvwmTaskBar: WindowButtonsRightMargin 0
+*FvwmTaskBar: Action Click1 IconifyOrFocusAndRaise
+*FvwmTaskBar: Action Click2 Nop
+*FvwmTaskBar: Action Click3 Popup Window-Ops2
+*FvwmTaskBar: Button Icon pager.xpm, Action ToggleFvwmPager
+*FvwmTaskBar: Pad 0
+
+# FvwmForm alias - query exit ala mwm
+*QuitVerify: GrabServer
+#*QuitVerify: WarpPointer
+*QuitVerify: Font         fixed
+*QuitVerify: ButtonFont   fixed
+#
+*QuitVerify: Fore         black
+*QuitVerify: Back         gray75
+*QuitVerify: ItemFore     black
+*QuitVerify: ItemBack     gray75
+#
+# begin items
+*QuitVerify: Line         center
+*QuitVerify: Text         "Do you really want to exit FVWM?"
+*QuitVerify: Line         expand
+*QuitVerify: Button       quit  " Exit "
+*QuitVerify: Command      Quit
+*QuitVerify: Button       quit  "Cancel"
+*QuitVerify: Command      Nop
+
+*FvwmAnimate: Effect Frame
+*FvwmAnimate: Iterations 10
+*FvwmAnimate: Delay 8
+
+*FvwmPager: Font        none
+#*FvwmPager: Font -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+#*FvwmPager: Label 0 $[HOSTNAME]
+*FvwmPager: Back        black
+*FvwmPager: Fore        white
+*FvwmPager: DeskHilight true
+*FvwmPager: Hilight     grey20
+*FvwmPager: Geometry    +0+24
+*FvwmPager: SmallFont   5x8

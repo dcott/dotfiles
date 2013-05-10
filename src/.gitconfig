@@ -1,0 +1,18 @@
+[user]
+	name = Daniel Ott
+	email = daniel.ott@turner.com
+[core]
+	editor = vim
+	pager = ""
+[color]
+	status = auto
+	diff = auto
+[merge]
+	tool = vimdiff
+[alias]
+	lg = "log --graph --pretty='tformat:%C(red)%h%Creset - %s %C(green)(%ar)%Creset %C(blue)%cn <%ce>%Creset'"
+	st = status
+	ci = commit
+	civ = commit -v
+	co = checkout
+	br = branch

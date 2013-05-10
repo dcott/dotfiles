@@ -1,0 +1,29 @@
+# do not bell on tab-completion
+set bell-style none
+
+set meta-flag on
+set input-meta on
+set convert-meta on
+set output-meta on
+
+set echo-control-characters off
+
+# Completed names which are symbolic links to
+# directories have a slash appended.
+set mark-symlinked-directories on
+
+$if mode=emacs
+Meta-g: backward-char
+Meta-;: forward-char
+Meta-h: beginning-of-line
+Meta-j: backward-word
+Meta-k: forward-word
+Meta-l: end-of-line
+Meta-t: backward-delete-char
+Meta-p: delete-char
+Meta-y: backward-kill-line
+Meta-u: backward-kill-word
+Meta-i: kill-word
+Meta-o: kill-line
+Meta-RUBOUT: kill-whole-line
+$endif

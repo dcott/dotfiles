@@ -1,0 +1,286 @@
+!!
+!! Menu Configuration
+!!
+
+Menu DefaultRootMenu
+{
+	"Root Menu"          f.title
+	"xterm"              f.exec "xterm"
+  	"filemanager"        f.exec "thunar"
+	 no-label            f.separator
+	"Net"                f.menu Net
+	"Graphics"           f.menu Graphics
+	"Audio"              f.menu Audio
+	"Production Tools"   f.menu ProductionTools
+	"Utils"              f.menu Utils
+	"Office"             f.menu Office
+	"Games"              f.menu Games
+	 no-label            f.separator
+	"System"             f.menu System
+	"MWM"                f.menu MWM
+	 no-label            f.separator
+	"Lock Screen"        f.exec "xscreensaver-command -lock"
+	"Restart MWM"        f.restart
+	"Quit MWM"           f.quit_mwm
+
+}
+
+Menu Net
+{
+	"Net"                f.title
+	"firefox"            f.exec "firefox"
+	"thunderbird"        f.exec "thunderbird"
+	"gaim"               f.exec "gaim"
+	"vncviewer"          f.exec "vncviewer"
+	 no-label            f.separator
+	"cisco vpn start"    f.exec "xterm -T vpnclient -n vpnclient -e vpnclient connect Turner-US-ATL user dcott"
+	"cisco vpn stop"     f.exec "vpnclient disconnect"
+}
+
+Menu Graphics
+{
+	"Graphics"           f.title
+	"blender"            f.exec "xterm -T 'blender' -n 'Blender Launcher' -e blender"
+	"boujou411"          f.exec "boujou411"
+	"boujou500"          f.exec "boujou500"
+	"djv_view"           f.exec "djv_view"
+	"fcheck"             f.exec "fcheck"
+	"gimp"               f.exec "gimp"
+	"gqview"             f.exec "gqview"
+	"maya7"              f.exec "maya7"
+	"maya85"             f.exec "maya85"
+	"maya85u"            f.exec "maya85u"
+	"maya2008"           f.exec "maya2008"
+	"maya2008u"          f.exec "maya2008u"
+	"maya2009"           f.exec "maya2009"
+	"maya2009u"          f.exec "maya2009u"
+	"maya2010"           f.exec "maya2010"
+	"maya2011"           f.exec "maya2011"
+	"monet"              f.exec "monet"
+	"nuke"               f.exec "nuke"
+	"nukex"              f.exec "nukex"
+	"shake"              f.exec "shake"
+}
+
+Menu Audio
+{
+	"Audio"              f.title
+	"audacity"           f.exec "audacity"
+	"ardour"             f.exec "ardour"
+	"xmms"               f.exec "xmms"
+	"rhythmbox"          f.exec "rhythmbox"
+}
+
+Menu ProductionTools
+{
+	"Production Tools"     f.title
+	"irush"                f.exec "irush"
+	"rushtop"              f.exec "rushtop"
+	"onrush"               f.exec "onrush"
+	no-label               f.separator
+	"rush-maya701"         f.exec "//tsefx/sys/bin/rush-maya701.pl"
+	"rush-maya85"          f.exec "//tsefx/sys/bin/rush-maya85.pl"
+	"rush-maya-tile"       f.exec "//tsefx/sys/bin/rush-maya-tile-test.pl"
+	"rush-shake"           f.exec "//tsefx/sys/bin/rush-shake.pl"
+	"rush-shake_quicktime" f.exec "//tsefx/sys/bin/rush-shake_quicktime.pl"
+	"rush-xsi"             f.exec "//tsefx/sys/bin/rush-xsi.pl"
+	"rush-afterfx"         f.exec "//tsefx/sys/bin/rush-afterfx.pl"
+}
+
+Menu Utils
+{
+	"Utils"                 f.title
+	"gcalc"                 f.exec "gnome-calculator"
+	no-label                f.separator
+	"xmag"                  f.exec "xmag"
+	"xfontsel"              f.exec "xfontsel"
+	no-label                f.separator
+	"xeyes"                 f.exec "xeyes"
+	"xsnow"                 f.exec "xsnow -nosanta -notrees"
+	no-label                f.separator
+	"top"                   f.exec "xterm -T Top -n Top -e top"
+	"gkrellm"               f.exec "gkrellm"
+	"xosview"               f.exec "xosview -geometry -0+0"
+	no-label                f.separator
+	"screenshot fullscreen" f.exec "snaproot.sh"
+	"screenshot select win" f.exec "snapwin.sh"
+}
+
+Menu Office
+{
+	"Office"             f.title
+	"ooffice"            f.exec "ooffice"
+	"nedit"              f.exec "nedit"
+	"xpdf"               f.exec "xpdf"
+	"evince"             f.exec "evince"
+	"WinXP32"            f.exec "VirtualBox --startvm WinXP32"
+}
+
+Menu Games
+{
+	"Games"              f.title
+	"quake3"             f.exec "quake3"
+	"xboard"             f.exec "xboard"
+}
+
+Menu System
+{
+	"System"             f.title
+!!  cursor name comes from cursorfont.h
+	"Reset Root Cursor"  f.exec "xsetroot -cursor_name X_cursor"
+	"Reset Key Repeat Rate"  f.exec "xset r rate 200 40"
+	"Nvidia Settings"    f.exec "nvidia-settings"
+	"Sound"              f.menu Sound
+	"Wallpaper"          f.menu Wallpaper
+	"XScreenSaver"       f.menu XScreenSaver
+}
+
+Menu Sound
+{
+    "gnome volume"       f.exec "gnome-volume-control"
+    "alsamixer"          f.exec "xterm -e alsamixer"
+    "amixer 100"         f.exec "amixer -q set Master 100%; amixer -q set PCM 100%"
+    "amixer 90"          f.exec "amixer -q set Master 90%; amixer -q set PCM 90%"
+    "amixer 70"          f.exec "amixer -q set Master 70%; amixer -q set PCM 70%"
+    "amixer 0"           f.exec "amixer -q set Master 0%; amixer -q set PCM 0%"
+}
+
+Menu XScreenSaver
+{
+	"on"       f.exec "xscreensaver"
+	"off"      f.exec "xscreensaver-command -exit"
+	"prefs"    f.exec "xscreensaver-command -prefs"
+	"activate" f.exec "xscreensaver-command -activate"
+	"lock"     f.exec "xscreensaver-command -lock"
+}
+
+Menu Wallpaper
+{
+	"Random"  f.exec "set_rand_bg.sh"
+	"Black"   f.exec "xsetroot -solid black"
+	"Grey 20" f.exec "xsetroot -solid grey20"
+	"White"   f.exec "xsetroot -solid white"
+	"Browse"  f.exec "gqview ${HOME}/cabinet/pics/backgrounds"
+}
+
+Menu MWM
+{
+	"MWM"                f.title
+	"Shuffle Up"         f.circle_up
+	"Shuffle Down"       f.circle_down
+	"Refresh"            f.refresh
+	"Pack Icons"         f.pack_icons
+!	"Toggle Behavior..." f.set_behavior
+}
+
+!!
+!! Default Window Menu
+!!
+
+Menu DefaultWindowMenu
+{
+	Restore     _R  Mod4<Key>F5  f.restore
+	Move        _M  Mod4<Key>F7  f.move
+	Size        _S  Mod4<Key>F8  f.resize
+	Minimize    _n  Mod4<Key>F9  f.minimize
+	Maximize    _x  Mod4<Key>F10 f.maximize
+	Lower       _L  Mod4<Key>F3  f.lower
+	no-label                     f.separator
+	Close       _C  Mod4<Key>F4  f.kill
+}
+
+
+!!
+!! Key Bindings
+!!
+
+Keys DefaultKeyBindings
+{
+	<Key>XF86AudioLowerVolume  root|icon|window f.exec "amixer -q set Master 1-"
+	<Key>XF86AudioRaiseVolume  root|icon|window f.exec "amixer -q set Master 1+"
+	<Key>XF86AudioMute         root|icon|window f.exec "amixer -q set Master toggle"
+	Mod4<Key>XF86AudioMute     root|icon|window f.exec "amixer -q set Master 70%; amixer -q set PCM 70%"
+	Mod4<Key>F1                root|icon|window f.menu DefaultRootMenu
+!!	Shift<Key>Escape           window|icon      f.post_wmenu
+	Mod4<Key>space             window|icon      f.post_wmenu
+	Mod4<Key>Tab               root|icon|window f.prev_key
+	Mod4 Shift<Key>Tab         root|icon|window f.next_key
+!!	Mod4<Key>Escape            root|icon|window f.circle_down
+!!	Mod4 Shift<Key>Escape      root|icon|window f.circle_up
+!!	Mod4 Shift Ctrl<Key>exclam root|icon|window f.set_behavior
+!!	Mod4<Key>quoteleft         window           f.next_key transient
+!!	Mod4 Shift<Key>quoteleft   window           f.prev_key transient
+!!	Shift<Key>F10              icon             f.post_wmenu
+	Mod4 <Key>F11              root|icon|window f.restart
+	Mod4 Shift<Key>F11         root|icon|window f.quit_mwm
+	Mod4 <Key>F12              root|icon|window f.exec "xscreensaver-command -lock"
+	Mod4<Key>Return            root|icon|window f.exec "xterm"
+	Mod4<Key>m                 icon|window      f.maximize
+	Mod4<Key>r                 icon|window      f.restore
+	Mod4<Key>i                 window           f.minimize
+	Mod4<Key>n                 window|icon      f.next_key
+	Mod4<Key>p                 window|icon      f.prev_key
+	Mod4<Key>l                 window|icon      f.raise_lower
+	Mod4<Key>w                 window|icon      f.kill
+
+!! XTerm launchers centered on 2560x1600 screen
+!!	Mod4<Key>KP_1       root|window|icon f.exec "xterm -geometry +515-4"
+!!	Mod4<Key>KP_2       root|window|icon f.exec "xterm -geometry +1025-4"
+!!	Mod4<Key>KP_3       root|window|icon f.exec "xterm -geometry +1536-4"
+
+!! XTerm Launchers
+	Mod4<Key>KP_1       root|window|icon f.exec "xterm -geometry +4-4"
+	Mod4<Key>KP_2       root|window|icon f.exec "xterm -geometry +515-4"
+	Mod4<Key>KP_3       root|window|icon f.exec "xterm -geometry +1026-4"
+	Mod4<Key>KP_4       root|window|icon f.exec "xterm -geometry +4-349"
+	Mod4<Key>KP_5       root|window|icon f.exec "xterm -geometry +515-349"
+	Mod4<Key>KP_6       root|window|icon f.exec "xterm -geometry +1026-349"
+	Mod4<Key>KP_7       root|window|icon f.exec "xterm -geometry +4-694"
+	Mod4<Key>KP_8       root|window|icon f.exec "xterm -geometry +515-694"
+	Mod4<Key>KP_9       root|window|icon f.exec "xterm -geometry +1026-694"
+
+!! Application Launchers
+	Mod4 Alt<Key>KP_1   root|window|icon f.exec "firefox"
+	Mod4 Alt<Key>KP_2   root|window|icon f.exec "thunderbird"
+	Mod4 Alt<Key>KP_3   root|window|icon f.exec "xmms"
+	Mod4 Alt<Key>KP_4   root|window|icon f.exec "xterm -T 'Maya2008 Launcher' -n 'Maya2008 Launcher' -e maya2008tst"
+	Mod4 Alt<Key>KP_5   root|window|icon f.exec "xterm -T 'Shake Launcher' -n 'Shake Launcher' -e shake"
+	Mod4 Alt<Key>KP_6   root|window|icon f.exec "gimp"
+	Mod4 Alt<Key>KP_7   root|window|icon f.exec "maya2011devel"
+	Mod4 Alt<Key>KP_8   root|window|icon f.exec ""
+	Mod4 Alt<Key>KP_9   root|icon|window f.exec "gnome-volume-control"
+
+	Mod4 Ctrl<Key>KP_1  root|window|icon f.exec "vdesk 1"
+	Mod4 Ctrl<Key>KP_2  root|window|icon f.exec "vdesk 2"
+	Mod4 Ctrl<Key>KP_3  root|window|icon f.exec "vdesk 3"
+	Mod4 Ctrl<Key>KP_4  root|window|icon f.exec "vdesk 4"
+	Mod4 Ctrl<Key>KP_5  root|window|icon f.exec "vdesk 5"
+	Mod4 Ctrl<Key>KP_6  root|window|icon f.exec "vdesk 6"
+	Mod4 Ctrl<Key>KP_7  root|window|icon f.exec "vdesk 7"
+	Mod4 Ctrl<Key>KP_8  root|window|icon f.exec "vdesk 8"
+	Mod4 Ctrl<Key>KP_9  root|window|icon f.exec "vdesk 9"
+}
+
+!!
+!! Button Bindings
+!!
+
+Buttons DefaultButtonBindings
+{
+	<Btn1Down>          icon|frame        f.raise
+	<Btn2Down>          window            f.focus_key
+	<Btn3Down>          window            f.focus_key
+	Mod4<Btn1Down>      window            f.raise
+	Mod4<Btn2Down>      window            f.minimize
+	Mod4<Btn2Down>      icon              f.maximize
+	Mod4<Btn4Down>      window|icon|root  f.circle_up
+	Mod4<Btn5Down>      window|icon|root  f.circle_down
+	<Btn3Down>          root              f.menu DefaultRootMenu
+	<Btn3Down>          icon|frame        f.lower
+	Mod4<Btn3Down>      window|icon       f.lower
+}
+
+ 
+!!
+!!  END OF mwm RESOURCE DESCRIPTION FILE
+!!

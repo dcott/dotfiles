@@ -1,0 +1,11 @@
+! First and Foremost
+! Clear all shift lock bindings
+clear Lock
+! Set the "Caps_Lock" key to be a Control_L key
+keycode 66  = Control_L
+
+! Assign multimedia keys
+keycode 174 = XF86AudioLowerVolume
+keycode 176 = XF86AudioRaiseVolume
+keycode 160 = XF86AudioMute
+keycode 204 = XF86Eject

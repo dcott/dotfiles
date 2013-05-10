@@ -1,0 +1,225 @@
+!! .Xresources
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! XTerm
+XTerm*Background: black
+XTerm*Foreground: grey80
+XTerm*ColorBD: white
+XTerm*CursorColor: #940000
+XTerm*PointerColor: white
+XTerm*PointerColorBackground: black
+XTerm*ScrollBar: true
+XTerm*ScrollLines: 1600
+XTerm*scrollKey: true
+XTerm*scrollTtyOutput: true
+XTerm*loginShell: false
+XTerm*backarrowKeyIsErase: true
+XTerm*color4: #0080ff
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! XOsview
+xosview*background: #666666
+xosview*foreground: black
+xosview*meterLabelColor: black
+xosview*usedLabelColor: black
+xosview*loadIdleColor: grey50
+xosview*loadGraph: False
+xosview*loadPriority: 10
+xosview*cpuFreeColor: grey50
+xosview*memFreeColor: grey50
+xosview*swapFreeColor: grey50
+xosview*pageIdleColor: grey50
+xosview*diskIdleColor: grey50
+xosview*diskPriority: 1
+xosview*intOffColor: grey50
+xosview*net: True
+xosview*netPriority: 1
+xosview*netBackground: grey50
+xosview*interrupts: False
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Mwm
+!!
+Mwm*autoKeyFocus: True
+Mwm*fadeNormalIcon: True
+Mwm*feedbackGeometry: -0+0
+Mwm*focusAutoRaise: False
+Mwm*frameBorderWidth: 4
+!Mwm*iconBoxSBDisplayPolicy: vertical
+Mwm*iconImageMaximum: 48x48
+Mwm*iconImageMinimum: 48x48
+!Mwm*iconPlacement: left bottom
+Mwm*iconPlacement: top right
+Mwm*keyboardFocusPolicy: explicit
+Mwm*limitResize: True
+Mwm*lowerOnIconify: True
+Mwm*moveOpaque: True
+Mwm*passButtons: True
+Mwm*passSelectButton: True
+Mwm*positionIsFrame: True
+Mwm*positionOnScreen: True
+Mwm*resizeBorderWidth: 4
+Mwm*startupKeyFocus: True
+Mwm*useIconBox: False
+!! 4dwm default
+!Mwm*activeForeground: #000000
+!Mwm*activeBackground: #b3ad91
+!! Charcoal
+Mwm*activeForeground: #d2d2d2
+Mwm*activeTopShadowColor: #676767
+Mwm*activeBackground: #474747
+Mwm*activeBottomShadowColor: #272727
+Mwm*client*foreground: #000000
+Mwm*client*topShadowColor: #676767
+Mwm*client*background: #474747
+Mwm*client*bottomShadowColor: #272727
+Mwm*icon*foreground: #000000
+Mwm*icon*topShadowColor: #676767
+Mwm*icon*background: #474747
+Mwm*icon*bottomShadowColor: #272727
+Mwm*iconImageBackground: #000000
+Mwm*feedback.foreground: #d2d2d2
+Mwm*feedback.topShadowColor: #676767
+Mwm*feedback.background: #474747
+Mwm*feedback.bottomShadowColor: #272727
+!! If you ever want textured borders
+!Mwm*activeBackgroundPixmap: rusty_fg.xpm
+!Mwm*client*backgroundPixmap: rusty_bg.xpm
+!Mwm*icon*backgroundPixmap: mwm_bg.xpm
+! CLIENT CONFIGS
+Mwm*irush*iconImage: irush.xpm
+Mwm*Firefox-bin*iconImage: firefox.xpm
+Mwm*Firefox*iconImage: firefox.xpm
+Mwm*Navigator*iconImage: firefox.xpm
+Mwm*Gaim*iconImage: gaim.xpm
+Mwm*Pidgin*iconImage: gaim.xpm
+Mwm*gimp*iconImage: gimp.xpm
+Mwm*gnome-volume-control*iconImage: mixer.xpm
+Mwm*gnome-calculator*iconImage: gcalc.xpm
+Mwm*gcalctool*iconImage: gcalc.xpm
+Mwm*gqview*iconImage: gqview.xpm
+Mwm*Maya*iconImage: maya.xpm
+Mwm*Maya-bin*iconImage: maya.xpm
+!Mwm*Maya-bin*clientFunctions: +all
+!Mwm*Maya-bin*clientDecoration: +all
+Mwm*Ogle*iconImage: ogle.xpm
+Mwm*rushtop*iconImage: rush_top.xpm
+Mwm*rushtop*maximumClientSize: vertical
+Mwm*Shake*iconImage: shake.xpm
+Mwm*Thunderbird-bin*iconImage: thunderbird.xpm
+Mwm*Vncviewer*iconImage: vnc.xpm
+Mwm*xclock*clientDecoration: -all +border
+!Mwm*xclock*clientFunctions: -all
+Mwm*xclock*iconImage: clock.xpm
+Mwm*xmms*iconImage: xmms.xpm
+!Mwm*xosvlocal*clientDecoration: -all +border +resizeh
+!Mwm*xosvlocal*clientFunctions: -all
+Mwm*xosvlocal*iconImage: xosview.xpm
+Mwm*xterm*iconImage: xterm.xpm
+Mwm*xterm*maximumClientSize: vertical
+Mwm*xcalc*iconImage: xcalc.xpm
+Mwm*it*iconImage: pxit.xpm
+Mwm*ImageWindow*iconImage: pxit.xpm
+Mwm*CatalogWindow*iconImage: pxit.xpm
+Mwm*ivDisplay*iconImage: pxcat.xpm
+Mwm*Alfred*iconImage: pxalf.xpm
+Mwm*Nuke61*iconImage: nuke.xpm
+Mwm*TaskTree*iconImage: pxalf.xpm
+Mwm*MPlayer*iconImage: mplayer.xpm
+Mwm*defaults*iconImage: shake.xpm
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! XCalc
+!!
+xcalc*ti.bevel.screen*background: darkgrey
+xcalc*ti.background: grey
+xcalc*ti.button1.background: darkgrey
+xcalc*ti.button2.background: darkgrey
+xcalc*ti.button3.background: darkgrey
+xcalc*ti.button4.background: darkred
+xcalc*ti.button4.foreground: white
+xcalc*ti.button5.background: darkred
+xcalc*ti.button5.foreground: white
+xcalc*ti.button6.background: darkgrey
+xcalc*ti.button7.background: darkgrey
+xcalc*ti.button8.background: darkgrey
+xcalc*ti.button9.background: darkgrey
+xcalc*ti.button10.background: darkgrey
+xcalc*ti.button11.background: darkgrey
+xcalc*ti.button12.background: darkgrey
+xcalc*ti.button13.background: darkgrey
+xcalc*ti.button14.background: darkgrey
+xcalc*ti.button15.background: darkgrey
+xcalc*ti.button16.background: darkgrey
+xcalc*ti.button17.background: darkgrey
+xcalc*ti.button18.background: darkgrey
+xcalc*ti.button19.background: darkgrey
+xcalc*ti.button20.background: darkgrey
+xcalc*ti.button21.background: lightblue
+xcalc*ti.button22.background: lightgrey
+xcalc*ti.button23.background: lightgrey
+xcalc*ti.button24.background: lightgrey
+xcalc*ti.button25.background: darkgrey
+xcalc*ti.button26.background: lightblue
+xcalc*ti.button27.background: lightgrey
+xcalc*ti.button28.background: lightgrey
+xcalc*ti.button29.background: lightgrey
+xcalc*ti.button30.background: darkgrey
+xcalc*ti.button31.background: lightblue
+xcalc*ti.button32.background: lightgrey
+xcalc*ti.button33.background: lightgrey
+xcalc*ti.button34.background: lightgrey
+xcalc*ti.button35.background: darkgrey
+xcalc*ti.button36.background: lightblue
+xcalc*ti.button37.background: lightgrey
+xcalc*ti.button38.background: darkgrey
+xcalc*ti.button39.background: darkgrey
+xcalc*ti.button40.background: darkgrey
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! XClock
+!!
+XClock*foreground: #000000
+XClock*background: #666666
+XClock*render: False
+XClock*analog: False
+XClock*twentyfour: False
+XClock*update: 1
+XClock*padding: 3
+XClock*font: -*-clean-*-*-*-*-13-130-*-*-*-*-*-*
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Xforge
+!!
+Xforge*topShadowColor: grey55
+Xforge*background: grey40
+Xforge*bottomShadowColor: grey25
+Xforge*foreground: black
+!Xforge*shadowThickness: 1
+Xforge*XmTextField*background: grey70
+xforge.quitDialog_popup.quitDialog.dialogStyle: XmDIALOG_FULL_APPLICATION_MODAL
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Xmag
+!!
+xmag*background: #474747
+xmag*foreground: #d2d2d2
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! Xpdf
+xpdf.initialZoom: page
+xpdf.toolTipEnable: False
+xpdf*topShadowColor: grey55
+xpdf*background: grey40
+xpdf*bottomShadowColor: grey25
+xpdf*foreground: black
+!xpdf*shadowThickness: 1
+xpdf*XmTextField*background: white

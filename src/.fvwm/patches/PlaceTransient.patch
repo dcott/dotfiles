@@ -1,0 +1,197 @@
+diff -Naur fvwm-2.5.10/fvwm/fvwm.h fvwm-2.5.10_transient_placement/fvwm/fvwm.h
+--- fvwm-2.5.10/fvwm/fvwm.h	2004-02-16 14:45:59.000000000 +0100
++++ fvwm-2.5.10_transient_placement/fvwm/fvwm.h	2004-09-22 18:21:36.000000000 +0200
+ <at>  <at>  -469,6 +469,13  <at>  <at> 
+ #define PLACE_MINOVERLAP        0x7
+ #define PLACE_MASK              0x7
+ 	unsigned placement_mode : 3;
++	/* To avoid clash with placement_mode in __explain_placement(),
++	 * do not use the placement mode values. */
++#define PLACE_TRANSIENT_NONE    0x0
++#define PLACE_TRANSIENT_PARENT  0x8
++#define PLACE_TRANSIENT_POINTER 0x9
++#define PLACE_TRANSIENT_MASK    0x1F
++	unsigned placement_transient_mode : 5;
+ 	unsigned ewmh_placement_mode : 2; /* see ewmh.h */
+ #define WS_CR_MOTION_METHOD_AUTO CR_MOTION_METHOD_AUTO
+ #define WS_CR_MOTION_METHOD_USE_GRAV CR_MOTION_METHOD_USE_GRAV
+diff -Naur fvwm-2.5.10/fvwm/placement.c fvwm-2.5.10_transient_placement/fvwm/placement.c
+--- fvwm-2.5.10/fvwm/placement.c	2004-03-17 17:57:50.000000000 +0100
++++ fvwm-2.5.10_transient_placement/fvwm/placement.c	2004-09-22 15:06:47.000000000 +0200
+ <at>  <at>  -354,6 +354,75  <at>  <at> 
+ 	return;
+ }
+
++static int TransientPlacement(
++	FvwmWindow *t, style_flags *sflags,
++	rectangle *screen_g, int *x, int *y)
++{
++	*x = 0;
++	*y = 0;
++
++	if (SPLACEMENT_TRANSIENT_MODE(sflags) ==
++		PLACE_TRANSIENT_PARENT)
++	{
++		FvwmWindow *i;
++
++
++		for (i = Scr.FvwmRoot.next; i != NULL; t = i->next)
++		{
++			if (FW_W(i) == FW_W_TRANSIENTFOR(t))
++			{
++				*x = i->frame_g.x +
++					(i->frame_g.width - t->frame_g.width)
++					/ 2;
++				*y = i->frame_g.y +
++					(i->frame_g.height - t->frame_g.height)
++					/ 2;
++				break;
++			}
++		}
++	}
++	else
++	{
++		Window wdummy;
++		int root_x;
++		int root_y;
++		int idummy;
++		unsigned int mask;
++
++		if (FQueryPointer(
++			dpy, FW_W(t), &wdummy, &wdummy,
++			&root_x, &root_y,
++			&idummy, &idummy,
++			&mask))
++		{
++			*x = root_x - t->frame_g.width / 2;
++			*y = root_y - t->frame_g.height / 2;
++		}
++	}
++
++	if (t->frame_g.width < screen_g->width)
++	{
++		*x = MAX (*x, 0);
++
++		if (*x + t->frame_g.width > screen_g->width)
++		{
++			*x = screen_g->width - t->frame_g.width;
++		}
++	}
++
++	if (t->frame_g.height < screen_g->height)
++	{
++		*y = MAX (*y, 0);
++
++		if (*y + t->frame_g.height > screen_g->height)
++		{
++			*y = screen_g->height - t->frame_g.height;
++		}
++	}
++
++	return True;
++}
++
+ #define GET_NEXT_STEP 5
+ static int get_next_x(
+ 	FvwmWindow *t, rectangle *screen_g, int x, int y, int pdeltax,
+ <at>  <at>  -894,6 +963,21  <at>  <at> 
+ 			break;
+ 		}
+ 	}
++
++	/* Check whether the window is a transient and a
++	 * transient placement mode is set.
++	 */
++	if ((IS_TRANSIENT(fw))&&(FW_W_TRANSIENTFOR(fw)!=None)&&
++		(FW_W_TRANSIENTFOR(fw) != Scr.Root)&&
++		SPLACEMENT_TRANSIENT_MODE(sflags) != PLACE_TRANSIENT_NONE)
++	{
++		/* TransientPlacement() returns always True. */
++		flags.is_smartly_placed = TransientPlacement(
++			fw, sflags, &screen_g, &attr_g->x, &attr_g->y);
++		reason->pos.algo = SPLACEMENT_TRANSIENT_MODE(sflags);
++                return rc;
++	}
++
+ 	/* first, try various "smart" placement */
+ 	reason->pos.algo = placement_mode;
+ 	switch (placement_mode)
+ <at>  <at>  -1053,6 +1137,7  <at>  <at> 
+ 		/* can't happen */
+ 		break;
+ 	}
++
+ 	if (flags.is_smartly_placed)
+ 	{
+ 		/* "smart" placement succed, we have done ... */
+ <at>  <at>  -1805,6 +1890,12  <at>  <at> 
+ 		case PLACE_MINOVERLAP:
+ 			a = "MinOverlap";
+ 			break;
++		case PLACE_TRANSIENT_PARENT:
++			a = "TransientParent";
++			break;
++		case PLACE_TRANSIENT_POINTER:
++			a = "TransientPointer";
++			break;
+ 		default:
+ 			a = "bug";
+ 			break;
+diff -Naur fvwm-2.5.10/fvwm/style.c fvwm-2.5.10_transient_placement/fvwm/style.c
+--- fvwm-2.5.10/fvwm/style.c	2004-02-16 14:45:59.000000000 +0100
++++ fvwm-2.5.10_transient_placement/fvwm/style.c	2004-09-22 18:11:40.000000000 +0200
+ <at>  <at>  -3204,6 +3204,15  <at>  <at> 
+ 			ps->flag_mask.use_no_transient_pposition = 1;
+ 			ps->change_mask.use_no_transient_pposition = 1;
+ 		}
++		if (StrEquals(token, "NoTransientPlacement"))
++		{
++			ps->flags.placement_transient_mode =
++				PLACE_TRANSIENT_NONE;
++			ps->flag_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++			ps->change_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++		}
+ 		else if (StrEquals(token, "NoTransientUSPosition"))
+ 		{
+ 			ps->flags.use_no_transient_usposition = on;
+ <at>  <at>  -3727,6 +3736,26  <at>  <at> 
+ 			S_SET_IS_TOP_TITLE_ROTATED(SCM(*ps), 1);
+ 			S_SET_IS_TOP_TITLE_ROTATED(SCC(*ps), 1);
+ 		}
++                else if (StrEquals(token, "TransientParentPlacement"))
++		{
++                        fprintf (stderr, "Setting TransientParentPlacement\n");
++			ps->flags.placement_transient_mode =
++				PLACE_TRANSIENT_PARENT;
++			ps->flag_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++			ps->change_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++		}
++                else if (StrEquals(token, "TransientPointerPlacement"))
++		{
++                        fprintf (stderr, "Setting TransientPointerPlacement\n");
++			ps->flags.placement_transient_mode =
++				PLACE_TRANSIENT_POINTER;
++			ps->flag_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++			ps->change_mask.placement_transient_mode =
++				PLACE_TRANSIENT_MASK;
++		}
+ 		else
+ 		{
+ 			found = False;
+diff -Naur fvwm-2.5.10/fvwm/style.h fvwm-2.5.10_transient_placement/fvwm/style.h
+--- fvwm-2.5.10/fvwm/style.h	2004-02-16 14:45:59.000000000 +0100
++++ fvwm-2.5.10_transient_placement/fvwm/style.h	2004-09-22 13:26:31.000000000 +0200
+ <at>  <at>  -53,6 +53,8  <at>  <at> 
+ 	((sf)->is_unmanaged)
+ #define SPLACEMENT_MODE(sf) \
+ 	((sf)->placement_mode)
++#define SPLACEMENT_TRANSIENT_MODE(sf) \
++	((sf)->placement_transient_mode)
+ #define SEWMH_PLACEMENT_MODE(sf) \
+ 	((sf)->ewmh_placement_mode)
+ #define SUSE_BACKING_STORE(sf) \
