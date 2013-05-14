@@ -3,6 +3,7 @@
 clear Lock
 ! Set the "Caps_Lock" key to be a Control_L key
 keycode 66  = Control_L
+add Control = Control_L
 
 ! Assign multimedia keys
 keycode 174 = XF86AudioLowerVolume
