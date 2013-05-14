@@ -173,6 +173,25 @@ function ,u () {
 	cd /tsportscssu/tsportscssu/projects;
 }
 
+# Check the current directory for bin and lib dirs.
+# If they exist and aren't already in PATH and PYTHONPATH
+# Then prepend them to the env
+function ,v () {
+	if [ -d "./bin" ]; then
+		echo "$PATH" | grep "$PWD/bin" >> /dev/null 2>&1;
+		if [ "$?" != "0" ]; then
+			export PATH="$PWD/bin:$PATH";
+		fi
+	fi
+
+	if [ -d "./lib" ]; then
+		echo "$PYTHONPATH" | grep "$PWD/lib" >> /dev/null 2>&1;
+		if [ "$?" != "0" ]; then
+			export PYTHONPATH="$PWD/lib:$PYTHONPATH";
+		fi
+	fi
+}
+
 function shfsls () {
 	find ./ -type f | grep -o -E '^[./a-zA-Z0-9_]+\.[0-9]+\.[a-zA-Z]+' | sed -r 's/\.[0-9]+\./\.*\./' | sort | uniq;
 }
