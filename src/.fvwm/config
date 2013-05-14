@@ -1,4 +1,4 @@
-ImagePath $[HOME]/.fvwm/decors/black:$[HOME]/.fvwm/icons:$[HOME]/.fvwm/pixmaps
+ImagePath $[HOME]/.fvwm/decors/black:$[HOME]/.fvwm/decors/qnx:$[HOME]/.fvwm/icons:$[HOME]/.fvwm/pixmaps
 DeskTopSize 4x1
 EdgeThickness 1
 EdgeResistance 333
@@ -42,38 +42,42 @@ AddToDecor black
 + TitleStyle Height 20 -- flat
 + BorderStyle -- HiddenHandles NoInset
 
-#AddToDecor QNX
-#+ ButtonStyle 1 ActiveUp (Pixmap QNX-optionsActive.png -- flat)
-#+ ButtonStyle 1 ActiveDown (Pixmap QNX-optionsActive.png -- flat)
-#+ ButtonStyle 1 Inactive (Pixmap QNX-optionsInActive.png -- flat)
-#+ ButtonStyle 2 - !MwmDecorMax
-#+ ButtonStyle 2 ActiveUp (Pixmap QNX-closeActiveUp.png -- flat)
-#+ ButtonStyle 2 ActiveDown (Pixmap QNX-closeActiveDown.png -- flat)
-#+ ButtonStyle 2 Inactive (Pixmap QNX-closeInActive.png -- flat)
-#+ ButtonStyle 4 - MwmDecorMax
-#+ ButtonStyle 4 ActiveUp (Pixmap QNX-maximizeActiveUp.png -- flat)
-#+ ButtonStyle 4 ToggledActiveUp (Pixmap QNX-maximizeActiveDown.png -- flat)
-#+ ButtonStyle 4 ToggledActiveDown (Pixmap QNX-maximizeActiveDown.png -- flat)
-#+ ButtonStyle 4 ToggledInActiveUp (Pixmap QNX-maximizeInActiveDown.png -- flat)
-#+ ButtonStyle 4 ToggledInActiveDown (Pixmap QNX-maximizeInActiveDown.png -- flat)
-#+ ButtonStyle 4 ActiveDown (Pixmap QNX-maximizeActiveDown.png -- flat)
-#+ ButtonStyle 4 Inactive (Pixmap QNX-maximizeInActive.png -- flat)
-#+ ButtonStyle 6 ActiveUp (Pixmap QNX-iconifyActiveUp.png -- flat)
-#+ ButtonStyle 6 ActiveDown (Pixmap QNX-iconifyActiveDown.png -- flat)
-#+ ButtonStyle 6 Inactive (Pixmap QNX-iconifyInActive.png -- flat)
-#+ TitleStyle LeftJustified Height 20
-#+ TitleStyle AllActive MultiPixmap \
-#	Main        AdjustedPixmap QNX-MainActive.png \
-#	LeftEnd     AdjustedPixmap QNX-LeftEnd.png \
-#	RightOfText AdjustedPixmap QNX-RightOfText.png \
-#	RightMain   AdjustedPixmap QNX-RightMain.png
-#+ TitleStyle AllInactive MultiPixmap \
-#	Main        AdjustedPixmap QNX-MainInActive.png \
-#	LeftEnd     AdjustedPixmap QNX-LeftEndInActive.png \
-#	RightOfText AdjustedPixmap QNX-RightOfTextInActive.png \
-#	RightMain   AdjustedPixmap QNX-RightMain.png
-#+ TitleStyle -- Flat
-#+ BorderStyle -- HiddenHandles !NoInset Raised
+AddToDecor QNX
++ ButtonStyle 1 ActiveUp (Pixmap QNX-optionsActive.png -- flat)
++ ButtonStyle 1 ActiveDown (Pixmap QNX-optionsActive.png -- flat)
++ ButtonStyle 1 Inactive (Pixmap QNX-optionsInActive.png -- flat)
+#
++ ButtonStyle 2 - !MwmDecorMax
++ ButtonStyle 2 ActiveUp (Pixmap QNX-closeActiveUp.png -- flat)
++ ButtonStyle 2 ActiveDown (Pixmap QNX-closeActiveDown.png -- flat)
++ ButtonStyle 2 Inactive (Pixmap QNX-closeInActive.png -- flat)
+#
++ ButtonStyle 4 - MwmDecorMax
++ ButtonStyle 4 ActiveUp (Pixmap QNX-maximizeActiveUp.png -- flat)
++ ButtonStyle 4 ToggledActiveUp (Pixmap QNX-maximizeActiveDown.png -- flat)
++ ButtonStyle 4 ToggledActiveDown (Pixmap QNX-maximizeActiveDown.png -- flat)
++ ButtonStyle 4 ToggledInActiveUp (Pixmap QNX-maximizeInActiveDown.png -- flat)
++ ButtonStyle 4 ToggledInActiveDown (Pixmap QNX-maximizeInActiveDown.png -- flat)
++ ButtonStyle 4 ActiveDown (Pixmap QNX-maximizeActiveDown.png -- flat)
++ ButtonStyle 4 Inactive (Pixmap QNX-maximizeInActive.png -- flat)
+#
++ ButtonStyle 6 ActiveUp (Pixmap QNX-iconifyActiveUp.png -- flat)
++ ButtonStyle 6 ActiveDown (Pixmap QNX-iconifyActiveDown.png -- flat)
++ ButtonStyle 6 Inactive (Pixmap QNX-iconifyInActive.png -- flat)
+#
++ TitleStyle LeftJustified Height 20
++ TitleStyle AllActive MultiPixmap \
+	Main        AdjustedPixmap QNX-MainActive.png \
+	LeftEnd     AdjustedPixmap QNX-LeftEnd.png \
+	RightOfText AdjustedPixmap QNX-RightOfText.png \
+	RightMain   AdjustedPixmap QNX-RightMain.png
++ TitleStyle AllInactive MultiPixmap \
+	Main        AdjustedPixmap QNX-MainInActive.png \
+	LeftEnd     AdjustedPixmap QNX-LeftEndInActive.png \
+	RightOfText AdjustedPixmap QNX-RightOfTextInActive.png \
+	RightMain   AdjustedPixmap QNX-RightMain.png
++ TitleStyle -- Flat
++ BorderStyle -- HiddenHandles !NoInset Raised
 
 # Colorset for the Panel
 #Colorset 8 fg white, bg black, Pixmap QNX-v002-taskbar-background.png
