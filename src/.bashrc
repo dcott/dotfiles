@@ -166,7 +166,7 @@ function ,a () {
 }
 
 function ,c () {
-	cd /tscomp/ol01/projects;
+	cd /tscomp/comp/projects;
 }
 
 function ,u () {
@@ -192,8 +192,16 @@ function ,v () {
 	fi
 }
 
-function shfsls () {
+function ,fsls () {
 	find ./ -type f | grep -o -E '^[./a-zA-Z0-9_]+\.[0-9]+\.[a-zA-Z]+' | sed -r 's/\.[0-9]+\./\.*\./' | sort | uniq;
+}
+
+function ,fszip () {
+	zip $(echo "$1" | sed 's/\.\*\.[a-z]*/.zip/') "$1"; done
+}
+
+function ,fstar () {
+	tar -czvf $(echo "$1" | sed 's/\.\*\.[a-z]*/.tgz/') "$1"; done
 }
 
 function shZipSeq () {
