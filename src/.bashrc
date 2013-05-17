@@ -197,11 +197,11 @@ function ,fsls () {
 }
 
 function ,fszip () {
-	zip $(echo "$1" | sed 's/\.\*\.[a-z]*/.zip/') "$1"; done
+	zip $(echo "$1" | sed 's/\.\*\.[a-z]*/.zip/') "$1";
 }
 
 function ,fstar () {
-	tar -czvf $(echo "$1" | sed 's/\.\*\.[a-z]*/.tgz/') "$1"; done
+	tar -czvf $(echo "$1" | sed 's/\.\*\.[a-z]*/.tgz/') "$1";
 }
 
 function shZipSeq () {
